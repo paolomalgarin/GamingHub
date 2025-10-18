@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GamingHub</title>
+
+    <link rel="stylesheet" href="./public/css/index.css">
+    <link rel="shortcut icon" href="./public/img/favicon.svg" type="image/x-icon">
+</head>
+
+<body>
+    <main>
+        <section id="landing">
+            <h1 class="neonText">GamingHub</h1>
+            <!-- <h2 style="font-size: var(--text-l); text-align: center; font-weight: 600;">Subheading</h2>
+            <h2 style="font-size: var(--text-m); text-align: center; font-weight: 600;">Normal text</h2>
+            <h3 style="font-size: var(--text-s); text-align: center; font-weight: 600;">lil text</h3> -->
+
+
+            <div id="arcade-machine-container">
+                <div class="arcade-machine">
+                    <div class="shadow"></div>
+                    <div class="top">
+                        <div class="stripes"></div>
+                    </div>
+                    <div class="screen-container">
+                        <div class="shadow"></div>
+                        <div class="screen">
+                            <div class="screen-display"></div>
+                            <h2><span id="game-name">Game Name</span><br>(use buttons to select)</h2>
+                            <div class="alien-container">
+                                <img class="alien" id="game-icon"
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAANSURBVBhXY/j//z8DAAj8Av6IXwbgAAAAAElFTkSuQmCC"
+                                    alt="">
+                            </div>
+                        </div>
+                        <div class="joystick">
+                            <div class="stick"></div>
+                        </div>
+                    </div>
+                    <div class="board">
+                        <div class="button button-a" id="button-left"></div>
+                        <div class="button button-b" id="button-center"></div>
+                        <div class="button button-c" id="button-right"></div>
+                    </div>
+                    <div class="bottom">
+                        <div class="stripes"></div>
+                    </div>
+                </div>
+
+                <!-- hints -->
+                <div id="hint-shift-arrow" class="hint">
+                    <div class="text">NEXT</div>
+                    <svg class="hint-arrow" viewBox="-0.32 -0.32 16.64 16.64" fill="none"
+                        xmlns="http://www.w3.org/2000/svg" stroke="#000" stroke-width="1"
+                        transform="matrix(1, 0, 0, -1, 0, 0)">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path d="M6 8L2 8L2 6L8 5.24536e-07L14 6L14 8L10 8L10 16L6 16L6 8Z" fill="#fff"></path>
+                        </g>
+                    </svg>
+                </div>
+                <div id="hint-select-arrow" class="hint">
+                    <svg class="hint-arrow" viewBox="-0.32 -0.32 16.64 16.64" fill="none"
+                        xmlns="http://www.w3.org/2000/svg" stroke="#000" stroke-width="1">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path d="M6 8L2 8L2 6L8 5.24536e-07L14 6L14 8L10 8L10 16L6 16L6 8Z" fill="#fff"></path>
+                        </g>
+                    </svg>
+                    <div class="text">SELECT</div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="sez2">
+        </section>
+    </main>
+
+    <script type="module" src="public/js/app.js"></script>
+</body>
+
+</html>

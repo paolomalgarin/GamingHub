@@ -1,0 +1,626 @@
+@import url('./animations.css');
+@import url('https://fonts.googleapis.com/css2?family=Finger+Paint&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik+Spray+Paint&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    min-width: 100vw;
+    box-sizing: border-box;
+
+    & .messages {
+        & #win-message {
+            width: 0;
+            height: 0;
+
+            &::after {
+                position: fixed;
+                transform: translate(-50%, -50%);
+                background-color: #eee;
+                border-radius: 74% 26% 47% 53% / 68% 46% 54% 32%;
+                font-family: 'Finger Paint';
+                font-style: normal;
+                font-weight: 800;
+                font-size: 4rem;
+
+                content: '';
+                color: #eee;
+                pointer-events: auto;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 200;
+
+                width: 0;
+                height: 0;
+                padding: 0;
+            }
+
+            &.animate::after {
+                animation: endMessage .5s cubic-bezier(0.49, 0.06, 1, 1) forwards;
+            }
+
+            &.deanimate::after {
+                animation: endMessage .5s cubic-bezier(0.49, 0.06, 1, 1) forwards reverse;
+            }
+
+            &.orange::after {
+                content: 'ORANGE WINS';
+
+                background-color: #F0701A;
+                background: radial-gradient(circle, rgba(255, 126, 41, 1) 0%, rgba(240, 112, 26, 1) 24%, rgba(240, 112, 26, 1) 84%, rgba(191, 89, 21, 1) 100%);
+            }
+
+            &.green::after {
+                content: 'GREEN WINS';
+
+                background: #6EA84A;
+                background: radial-gradient(circle, rgba(163, 194, 85, 1) 0%, rgba(110, 168, 74, 1) 24%, rgba(110, 168, 74, 1) 84%, rgba(66, 143, 66, 1) 100%);
+            }
+
+            &.draw::after {
+                content: 'PAREGGIO';
+
+                background: #646669;
+                background: radial-gradient(circle, #a4a7ac 0%, #737579 24%, #737579 84%, #3b3b3d 100%);
+            }
+        }
+    }
+
+    & main {
+        /* background-color: #eee; */
+        background-color: #000;
+        width: min(900px, 95vw);
+        min-height: min(500px, 95vh);
+        border-radius: 5px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        padding: 10px;
+        box-sizing: border-box;
+        box-shadow: 3px 3px 40px#000;
+
+        & #current-mode {
+            position: absolute;
+            right: 10px;
+            top: 5px;
+        }
+
+        & #mode-selector {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            box-sizing: border-box;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        & #host-cmds {
+            display: none;
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            padding: 10px;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #eee;
+        }
+
+        & #guest-cmds {
+            display: none;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            box-sizing: border-box;
+            padding: 10px;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #eee;
+        }
+
+
+        & .code-area {
+            position: relative;
+
+            & textarea {
+                width: 100%;
+                height: 100%;
+            }
+
+            & .copy-btn {
+                position: absolute;
+                bottom: 5px;
+                right: 5px;
+            }
+        }
+
+        & #game-container {
+            width: 100%;
+            background-color: #fff;
+            aspect-ratio: 1 / 1;
+            /* display: flex; */
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            display: none;
+            border: solid 1px #000;
+
+            & .cell {
+                width: 12.5%;
+                aspect-ratio: 1 / 1;
+                background-image: url('../img/generic/tiles/sprite1.png');
+                background-repeat: no-repeat;
+                background-size: cover;
+                position: relative;
+                image-rendering: pixelated;
+
+                &.tile {
+                    &.p1 {
+                        &.tileType1 {
+                            animation: p1tile1 1s linear 1 forwards;
+                        }
+
+                        &.tileType2 {
+                            animation: p1tile2 1s linear 1 forwards;
+                        }
+
+                        &.tileType3 {
+                            animation: p1tile3 1s linear 1 forwards;
+                        }
+
+                        &.tileType4 {
+                            animation: p1tile4 1s linear 1 forwards;
+                        }
+
+                        &.tileTypeFull {
+                            background-image: url('../img/player1/tiles/full.png');
+                        }
+                    }
+
+                    &.p2 {
+                        &.tileType1 {
+                            animation: p2tile1 1s linear 1 forwards;
+                        }
+
+                        &.tileType2 {
+                            animation: p2tile2 1s linear 1 forwards;
+                        }
+
+                        &.tileType3 {
+                            animation: p2tile3 1s linear 1 forwards;
+                        }
+
+                        &.tileType4 {
+                            animation: p2tile4 1s linear 1 forwards;
+                        }
+
+                        &.tileTypeFull {
+                            background-image: url('../img/player2/tiles/full.png');
+                        }
+                    }
+                }
+
+
+                &::before {
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    image-rendering: pixelated;
+
+                    width: 80%;
+                    height: 80%;
+                    display: block;
+                    content: '';
+                    position: absolute;
+                    left: 10%;
+                    top: 10%;
+                }
+
+                &.hideMoves::before {
+                    display: none;
+                }
+
+                &.shootable {
+                    &::before {
+                        background-color: #61a1d465;
+                        background-image: url('../img/generic/icons/shoot.png');
+                    }
+                }
+
+                &.walkable {
+                    &::before {
+                        background-color: #61a1d465;
+                        background-image: url('../img/generic/icons/walk.png');
+                    }
+                }
+
+                &.shoot-and-walk {
+                    &::before {
+                        background-color: #61a1d465;
+                        background-image: url('../img/generic/icons/shoot-walk.png');
+                    }
+                }
+
+                &::after {
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    image-rendering: pixelated;
+
+                    width: 100%;
+                    height: 100%;
+                    display: block;
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                }
+
+
+                &.player1 {
+                    &::after {
+                        animation: character1Animation 1s linear infinite;
+                    }
+
+                    &.squid {
+                        &::after {
+                            animation: character1SquidAnimation 1s linear infinite;
+                        }
+                    }
+
+                    &.invisible {
+                        &::after {
+                            display: none;
+                        }
+                    }
+                }
+
+                &.player2 {
+                    &::after {
+                        animation: character2Animation 1s linear infinite;
+                    }
+
+                    &.squid {
+                        &::after {
+                            animation: character2SquidAnimation 1s linear infinite;
+                        }
+                    }
+
+                    &.invisible {
+                        &::after {
+                            display: none;
+                        }
+                    }
+                }
+
+                & .powerup {
+                    position: absolute;
+                    top: 5%;
+                    left: 5%;
+                    width: 90%;
+                    height: 90%;
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                    background-position: center center;
+                    image-rendering: pixelated;
+                    pointer-events: none;
+
+                    &.glasses {
+                        background-image: url('../img/generic/icons/glasses/glasses.png');
+
+                        &.despawning {
+                            background-image: url('../img/generic/icons/glasses/glasses-despawning.png');
+                        }
+                    }
+
+                    &.bomb {
+                        &.frame1 {
+                            background-image: url('../img/generic/icons/bomb/bomb1.png');
+                        }
+
+                        &.frame2 {
+                            background-image: url('../img/generic/icons/bomb/bomb2.png');
+                        }
+
+                        &.frame3 {
+                            background-image: url('../img/generic/icons/bomb/bomb3.png');
+                        }
+
+                        &.frame4 {
+                            background-image: url('../img/generic/icons/bomb/bomb4.png');
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+
+    & #host-info-container {
+        position: fixed;
+        top: 5px;
+        left: 5px;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+
+        & #host-lives {
+            --ammo: 100%;
+
+            box-shadow: 1px 1px 3px #F0701A;
+            border: solid 1px #F0701A;
+            background-color: #F0701A;
+            background: linear-gradient(180deg, rgba(163, 194, 85, 0) calc(100% - var(--ammo)), #F0701A calc(100% - var(--ammo)), #F0701A 100%);
+            padding: 2px;
+            border-radius: 5px;
+        }
+    }
+
+    & #guest-info-container {
+        position: fixed;
+        bottom: 5px;
+        right: 5px;
+        z-index: 100;
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+
+        & #guest-lives {
+            --ammo: 100%;
+
+            box-shadow: 1px 1px 3px #6EA84A;
+            border: solid 1px #6EA84A;
+            background-color: #6EA84A;
+            background: linear-gradient(180deg, rgba(163, 194, 85, 0) calc(100% - var(--ammo)), rgba(110, 168, 74, 1) calc(100% - var(--ammo)), rgba(110, 168, 74, 1) 100%);
+            padding: 2px;
+            border-radius: 5px;
+        }
+    }
+
+
+    & .powerups-container {
+        max-width: 50vw;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2px;
+
+        & .powerup {
+            --light-powerup-color: #555;
+            --dark-powerup-color: #333;
+            --used-perc: 25%;
+
+            height: 30px;
+            aspect-ratio: 1/1;
+            image-rendering: pixelated;
+            background-color: var(--light-powerup-color);
+            border: solid 2px var(--dark-powerup-color);
+            background: conic-gradient(#e7e7e7 var(--used-perc), var(--light-powerup-color) var(--used-perc));
+            border-radius: 50%;
+            object-fit: contain;
+            padding: 2px;
+            box-sizing: border-box;
+            display: none;
+
+            &.host-powerup {
+                --light-powerup-color: #ff8330;
+                --dark-powerup-color: #F0701A;
+            }
+
+            &.guest-powerup {
+                --light-powerup-color: #7fbd59;
+                --dark-powerup-color: #6EA84A;
+            }
+        }
+    }
+
+    & .lives-container {
+        width: 60px;
+
+        & .life {
+            width: 20px;
+            box-sizing: border-box;
+            aspect-ratio: 1/1;
+            background-size: contain;
+            background-repeat: no-repeat;
+            display: inline-block;
+
+            &.full {
+                background-image: url('../img/generic/life/life-full.png');
+            }
+
+            &.empty {
+                background-image: url('../img/generic/life/life-empty.png');
+            }
+        }
+    }
+
+    & #turn {
+        position: fixed;
+        bottom: 5px;
+        left: 5px;
+        z-index: 100;
+        background-color: #f54343;
+        border: solid 1px #000;
+        width: 20px;
+        height: 20px;
+        display: none;
+        border-radius: 50%;
+
+        &.true {
+            background-color: #43f552;
+        }
+
+        &.false {
+            background-color: #f54343;
+        }
+    }
+
+    #show-hide-moves {
+        position: fixed;
+        top: 5px;
+        right: 5px;
+        z-index: 100;
+        background-color: #e3e3e3;
+        border: solid 1px #000;
+        background-image: url('../img/generic/icons/hide.png');
+        width: 20px;
+        height: 20px;
+        background-size: contain;
+        cursor: pointer;
+        border-radius: 5px;
+
+        &.show {
+            background-image: url('../img/generic/icons/show.png');
+        }
+    }
+}
+
+.btn {
+    box-sizing: border-box;
+    padding: 5px;
+    border-radius: 5px;
+    width: fit-content;
+    color: #000;
+    background-color: #fff;
+    border: solid 2px #eee;
+    box-shadow: 1px 1px 3px#eee;
+    cursor: pointer;
+    user-select: none;
+    display: inline-block;
+}
+
+textarea {
+    display: block;
+
+    &::-webkit-scrollbar {
+        width: 0;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -2;
+
+    .blob-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        &::after {
+            width: 100%;
+            height: 100%;
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            content: '';
+            background-color: #eeeeee8f;
+            backdrop-filter: blur(10px);
+        }
+    }
+
+    .blobs_1 {
+        background: #F0701A;
+        background: radial-gradient(circle, rgba(255, 126, 41, 1) 0%, rgba(240, 112, 26, 1) 24%, rgba(240, 112, 26, 1) 84%, rgba(191, 89, 21, 1) 100%);
+        width: calc((14vw + 14vh)/2);
+        aspect-ratio: 1/1;
+        position: fixed;
+        top: 5%;
+        left: 4%;
+        border-radius: 39% 61% 70% 30% / 61% 29% 71% 39%
+    }
+
+    .blobs_2 {
+        background: #F0701A;
+        background: radial-gradient(circle, rgba(255, 126, 41, 1) 0%, rgba(240, 112, 26, 1) 24%, rgba(240, 112, 26, 1) 84%, rgba(191, 89, 21, 1) 100%);
+        width: calc((10vw + 10vh)/2);
+        aspect-ratio: 1/1;
+        position: fixed;
+        top: 50%;
+        left: 10%;
+        border-radius: 63% 37% 56% 44% / 25% 28% 72% 75%
+    }
+
+    .blobs_3 {
+        background: #F0701A;
+        background: radial-gradient(circle, rgba(255, 126, 41, 1) 0%, rgba(240, 112, 26, 1) 24%, rgba(240, 112, 26, 1) 84%, rgba(191, 89, 21, 1) 100%);
+        width: calc((13vw + 13vh)/2);
+        aspect-ratio: 1/1;
+        position: fixed;
+        bottom: 5%;
+        left: 4%;
+        border-radius: 73% 27% 57% 43% / 28% 67% 33% 72%
+    }
+
+    .blobs_4 {
+        background: #F0701A;
+        background: radial-gradient(circle, rgba(255, 126, 41, 1) 0%, rgba(240, 112, 26, 1) 24%, rgba(240, 112, 26, 1) 84%, rgba(191, 89, 21, 1) 100%);
+        width: calc((18vw + 18vh)/2);
+        aspect-ratio: 1/1;
+        position: fixed;
+        top: 5%;
+        left: 30%;
+        border-radius: 74% 26% 47% 53% / 68% 46% 54% 32%
+    }
+
+    .blobs_5 {
+        background: #6EA84A;
+        background: radial-gradient(circle, rgba(163, 194, 85, 1) 0%, rgba(110, 168, 74, 1) 24%, rgba(110, 168, 74, 1) 84%, rgba(66, 143, 66, 1) 100%);
+        width: calc((15vw + 15vh)/2);
+        aspect-ratio: 1/1;
+        position: fixed;
+        bottom: 6%;
+        right: 33%;
+        border-radius: 48% 52% 30% 70% / 27% 37% 63% 73%
+    }
+
+    .blobs_6 {
+        background: #6EA84A;
+        background: radial-gradient(circle, rgba(163, 194, 85, 1) 0%, rgba(110, 168, 74, 1) 24%, rgba(110, 168, 74, 1) 84%, rgba(66, 143, 66, 1) 100%);
+        width: calc((20vw + 20vh)/2);
+        aspect-ratio: 1/1;
+        position: fixed;
+        top: 5%;
+        right: 4%;
+        border-radius: 26% 74% 61% 39% / 54% 67% 33% 46%
+    }
+
+    .blobs_7 {
+        background: #6EA84A;
+        background: radial-gradient(circle, rgba(163, 194, 85, 1) 0%, rgba(110, 168, 74, 1) 24%, rgba(110, 168, 74, 1) 84%, rgba(66, 143, 66, 1) 100%);
+        width: calc((13vw + 13vh)/2);
+        aspect-ratio: 1/1;
+        position: fixed;
+        bottom: 7%;
+        right: 3%;
+        border-radius: 66% 34% 33% 67% / 65% 73% 27% 35%;
+    }
+}

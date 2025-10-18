@@ -1,0 +1,51 @@
+@keyframes pulsate {
+    100% {
+        /* Larger blur radius */
+        text-shadow:
+            0 0 4px var(--light-color),
+            0 0 10px var(--light-color),
+            0 0 18px var(--light-color),
+            0 0 38px var(--glow-color),
+            0 0 73px var(--glow-color),
+            0 0 80px var(--glow-color),
+            0 0 94px var(--glow-color),
+            0 0 140px var(--glow-color);
+    }
+
+    0% {
+        /* A slightly smaller blur radius */
+        text-shadow:
+            0 0 4px var(--light-color),
+            0 0 10px var(--light-color),
+            0 0 18px var(--light-color),
+            0 0 36px var(--glow-color),
+            0 0 66px var(--glow-color),
+            0 0 70px var(--glow-color),
+            0 0 88px var(--glow-color),
+            0 0 130px var(--glow-color);
+    }
+}
+
+@keyframes bounce {
+    from {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes translate {
+    from {
+        top: 0;
+    }
+
+    to {
+        top: 10%;
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "gamesFolder": "./games",
+    "data": [
+        {
+            "gameName": "Splash Chess",
+            "gamePath": "SplashChess",
+            "gameIcon": "./public/img/GameIcons/SplashChess.png"
+        },
+        {
+            "gameName": "Smash",
+            "gamePath": "Smash",
+            "gameIcon": "./public/img/GameIcons/Smash.png"
+        }
+    ]
+}

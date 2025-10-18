@@ -1,0 +1,15 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Inter", sans-serif;
+}
+
+
+/* NEON TEXT */
+.neonText {
+    --glow-color: #0f9;
+    --light-color: #e2fff3;
+
+    color: var(--light-color);
+    animation: pulsate 0.31s ease-in-out infinite alternate;
+}

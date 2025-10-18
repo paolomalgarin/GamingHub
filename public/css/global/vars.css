@@ -1,0 +1,9 @@
+:root {
+    --text-xs: clamp(7px, .8rem, 2vw);
+    --text-s: clamp(10px, 1rem, 3vw);
+    --text-m: clamp(15px, 1.5rem, 4vw);
+    --text-l: clamp(25px, 2.5rem, 6vw);
+    --text-xl: clamp(40px, 5rem, 10vw);
+
+    --color-accent: #ff5100;
+}

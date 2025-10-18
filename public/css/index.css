@@ -1,0 +1,432 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('./global/vars.css');
+@import url('./global/elements.css');
+@import url('./global/animations.css');
+
+html {
+    height: 100%;
+    width: 100%;
+
+    body {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+
+        & main {
+            height: 100%;
+            width: 100%;
+
+            --landing-wall-color: #222;
+            --landing-floor-color: #2c2c2c;
+
+            & #landing {
+                width: 100%;
+                height: 100vh;
+                background: linear-gradient(180deg, var(--landing-wall-color) 70%, var(--landing-floor-color) 70%);
+
+                & h1 {
+                    text-align: center;
+                    font-size: var(--text-xl);
+                    font-weight: 600;
+                    user-select: none;
+                    --glow-color: var(--color-accent);
+                    position: absolute;
+                    width: 100%;
+                    top: max(10px, calc(70vh - 400px - 100px));
+                }
+
+                & #arcade-machine-container {
+                    --border-color: #111;
+                    --border-size: 5px;
+                    --stripe-left-color: var(--color-accent);
+                    --stripe-center-color: #292929;
+                    --stripe-right-color: var(--color-accent);
+                    --button-center-color: #eeb90c;
+                    --screen-container-color: #4b413b;
+                    --screen-container-shadow-color: #0000001a;
+                    --screen-color: #313332;
+                    --screen-title-font: 'Orbitron', sans-serif;
+                    --screen-font-color: #e0e0e0;
+                    --screen-subtext-font-color: #acacac;
+                    --joystick-color: #c99e0f;
+                    --joystick-light-color: #b5800d;
+                    --arcade-spec-color: #333;
+
+                    position: absolute;
+                    left: 50%;
+                    top: 70%;
+                    transform: translate(-50%, -65%) scale(1);
+
+                    &::after {
+                        position: absolute;
+                        content: '';
+                        left: 2%;
+                        top: 65%;
+                        width: 110%;
+                        height: 30%;
+                        z-index: -1;
+                        background-color: #0000002f;
+                        box-shadow: inset -35px 0px 25px 21px #2c2c2c;
+                        clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+                    }
+
+                    & .arcade-machine {
+                        width: 400px;
+                        height: 400px;
+                        position: relative;
+                        margin: 35px auto;
+                        perspective: 35em;
+
+                        & .top {
+                            height: 15%;
+                            width: 70%;
+                            position: absolute;
+                            top: 0%;
+                            left: 15%;
+                            background: var(--arcade-spec-color);
+                            border: var(--border-size) solid var(--border-color);
+                            z-index: 3;
+
+                            &:before,
+                            &:after {
+                                width: 100%;
+                                height: 4%;
+                                position: absolute;
+                                top: -9%;
+                                background: var(--arcade-spec-color);
+                                border: var(--border-size) solid var(--border-color);
+                                content: ' ';
+                            }
+
+                            &:before {
+                                left: -6%;
+                            }
+
+                            &:after {
+                                right: -6%;
+                            }
+                        }
+
+                        & .stripes {
+                            width: 10%;
+                            height: 100%;
+                            position: absolute;
+                            top: 0%;
+                            left: 45%;
+                            background: var(--stripe-center-color);
+
+                            &:before,
+                            &:after {
+                                width: 100%;
+                                height: 100%;
+                                position: absolute;
+                                top: 0%;
+                                content: ' ';
+                            }
+
+                            &:before {
+                                background: var(--stripe-left-color);
+                                left: -100%;
+                            }
+
+                            &:after {
+                                background: var(--stripe-right-color);
+                                right: -100%;
+                            }
+                        }
+
+                        &>.shadow {
+                            width: 65%;
+                            height: 85%;
+                            position: absolute;
+                            top: 2%;
+                            left: 19%;
+                            background: var(--color-accent);
+                            box-shadow: 0 0 60px var(--screen-container-color);
+                            z-index: -1;
+                        }
+
+                        & .screen-container {
+                            width: 62%;
+                            height: 50%;
+                            position: absolute;
+                            top: 15%;
+                            left: 19%;
+                            background: var(--screen-container-color);
+                            border: var(--border-size) solid var(--border-color);
+                            z-index: 1;
+
+                            &:before,
+                            &:after {
+                                width: 4%;
+                                height: 100%;
+                                position: absolute;
+                                top: -2%;
+                                background: var(--arcade-spec-color);
+                                content: ' ';
+                                border: var(--border-size) solid var(--border-color);
+                                z-index: 2;
+                            }
+
+                            &:before {
+                                left: -6%;
+                            }
+
+                            &:after {
+                                right: -6%;
+                            }
+
+                            & .shadow {
+                                width: 110%;
+                                height: 8%;
+                                position: absolute;
+                                top: 0%;
+                                left: -5%;
+                                background: var(--screen-container-shadow-color);
+                                z-index: 4;
+                            }
+
+                            & .screen {
+                                width: 75%;
+                                height: 70%;
+                                position: absolute;
+                                top: 15%;
+                                left: 11%;
+                                background: var(--screen-color);
+                                border: var(--border-size) solid var(--border-color);
+                                border-radius: 90px 93px 93px 93px / 15px 15px 15px 15px;
+                                overflow: hidden;
+                                text-align: center;
+
+                                &-display {
+                                    position: absolute;
+                                    width: 100%;
+                                    height: 200%;
+                                    background-image: repeating-linear-gradient(0deg, #313332, #313332 15px, #404342 15px, #404342 16px);
+                                    animation: translate 1s infinite;
+                                }
+
+                                & h2 {
+                                    position: absolute;
+                                    top: 60%;
+                                    color: var(--screen-subtext-font-color);
+                                    font-family: var(--screen-title-font), sans-serif;
+                                    font-size: var(--text-xs);
+                                    text-align: center;
+                                    width: 100%;
+                                    user-select: none;
+
+                                    & #game-name {
+                                        color: var(--screen-font-color);
+                                        font-size: var(--text-xs);
+                                    }
+                                }
+                            }
+
+                            & .joystick {
+                                width: 5%;
+                                height: 6%;
+                                background: var(--joystick-color);
+                                position: absolute;
+                                top: 91%;
+                                left: 17%;
+                                border-radius: 50%;
+                                border: var(--border-size) solid var(--border-color);
+                                z-index: 3;
+
+                                &:before {
+                                    width: 65%;
+                                    height: 90%;
+                                    position: absolute;
+                                    top: 7%;
+                                    left: 32%;
+                                    background: var(--joystick-light-color);
+                                    content: '';
+                                    border-radius: 50%;
+                                }
+
+                                & .stick {
+                                    width: 40%;
+                                    height: 200%;
+                                    position: absolute;
+                                    top: 100%;
+                                    left: 30%;
+                                    background: var(--border-color);
+                                    content: '';
+
+                                    &:before {
+                                        width: 150%;
+                                        height: 100%;
+                                        transform: rotate(90deg);
+                                        position: absolute;
+                                        top: 50%;
+                                        left: -20%;
+                                        background: var(--border-color);
+                                        content: '';
+                                    }
+                                }
+                            }
+                        }
+
+                        & .board {
+                            width: 66%;
+                            height: 20%;
+                            position: absolute;
+                            top: 61%;
+                            left: 18.2%;
+                            background: var(--screen-container-color);
+                            transform: rotateX(70deg);
+
+                            &:before,
+                            &:after {
+                                width: 4%;
+                                height: 92%;
+                                position: absolute;
+                                top: -2%;
+                                background: var(--arcade-spec-color);
+                                content: ' ';
+                                border: var(--border-size) solid var(--border-color);
+                                z-index: 2;
+                            }
+
+                            &:before {
+                                left: -6%;
+                            }
+
+                            &:after {
+                                right: -6%;
+                            }
+
+                            & .button {
+                                width: 6%;
+                                height: 15%;
+                                position: absolute;
+                                top: 40%;
+                                left: 30%;
+                                border-radius: 50%;
+                                border: var(--border-size) solid var(--border-color);
+                                cursor: pointer;
+
+                                &.button-a {
+                                    background: var(--stripe-left-color);
+                                    left: 40%;
+                                }
+
+                                &.button-b {
+                                    background: var(--button-center-color);
+                                    left: 55%;
+                                }
+
+                                &.button-c {
+                                    background: var(--stripe-right-color);
+                                    left: 70%;
+                                }
+                            }
+                        }
+
+                        & .bottom {
+                            width: 71%;
+                            height: 10%;
+                            position: absolute;
+                            top: 76%;
+                            left: 14.5%;
+                            background: var(--arcade-spec-color);
+                            border: var(--border-size) solid var(--border-color);
+
+                            &:before,
+                            &:after {
+                                width: 4%;
+                                height: 98%;
+                                position: absolute;
+                                top: -9%;
+                                background: var(--arcade-spec-color);
+                                content: ' ';
+                                border: var(--border-size) solid var(--border-color);
+                                z-index: 2;
+                            }
+
+                            &:before {
+                                left: -5.8%;
+                            }
+
+                            &:after {
+                                right: -5.9%;
+                            }
+                        }
+                    }
+
+                    & .alien-container {
+                        position: absolute;
+                        top: 20%;
+                        left: 35%;
+                        height: 30%;
+                        width: 30%;
+                        animation: bounce .8s infinite;
+
+                        & .alien {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: contain;
+                        }
+                    }
+
+                    & .hint {
+                        position: absolute;
+                        top: 0;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        gap: 10px;
+                        animation: bounce 1.1s infinite;
+                        display: none;
+
+                        & .text {
+                            color: var(--screen-font-color);
+                            font-size: 20px;
+                            font-weight: 600;
+                            padding: 3px;
+
+                            text-shadow:
+                                2px 2px 0 #000,
+                                -2px 2px 0 #000,
+                                -2px -2px 0 #000,
+                                2px -2px 0 #000;
+                            color: #fff;
+                        }
+
+                        & .hint-arrow {
+                            width: 40px;
+                            height: 40px;
+                        }
+
+                        &#hint-shift-arrow {
+                            left: 63%;
+                            top: 50%;
+                            animation-direction: reverse;
+                        }
+
+                        &#hint-select-arrow {
+                            left: 53%;
+                            top: 73%;
+                        }
+                    }
+                }
+            }
+
+            & #sez2 {
+                min-height: 100vh;
+                background-color: var(--landing-floor-color);
+                box-shadow: 0px 10px 20px 0px #3535354d inset;
+            }
+        }
+    }
+}
+
+
+
+@media only screen and (max-width: 450px) {
+    #arcade-machine-container {
+        transform: translate(-50%, -65%) scale(.7) !important;
+    }
+}
