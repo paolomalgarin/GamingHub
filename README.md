@@ -1,5 +1,5 @@
 # Giochino
 
-> try the game [here](https://paolomalgarin.github.io/Splashchess)
+> try the game [here](https://paolomalgarin.github.io/GamingHub)
 
 ⚠️DESKTOP ONLY⚠️
