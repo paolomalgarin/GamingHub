@@ -19,6 +19,7 @@ fetch('./public/data/gameList.json')
         document.getElementById('button-right').addEventListener('click', (evt) => {
             landingData.index = (landingData.index + 1) % landingData.gameList.length;
             showCurrentGame();
+            new Audio('./public/audio/sfx/shiftClick.wav').play();
 
             if (!hasShifted) document.getElementById('hint-shift-arrow').style.display = 'none';
             hasShifted = true;
@@ -26,13 +27,18 @@ fetch('./public/data/gameList.json')
         document.getElementById('button-left').addEventListener('click', (evt) => {
             landingData.index = (landingData.index + landingData.gameList.length - 1) % landingData.gameList.length;
             showCurrentGame();
+            new Audio('./public/audio/sfx/shiftClick.wav').play();
 
             if (!hasShifted) document.getElementById('hint-shift-arrow').style.display = 'none';
             hasShifted = true;
         });
 
         document.getElementById('button-center').addEventListener('click', (evt) => {
-            playCurrentGame();
+            new Audio('./public/audio/sfx/selectClick.wav').play();
+
+            setTimeout(() => {
+                playCurrentGame();
+            }, 300);
         });
 
 
