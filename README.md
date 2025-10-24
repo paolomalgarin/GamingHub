@@ -78,6 +78,5 @@ This project is released under [MIT License](https://github.com/paolomalgarin/Ga
 
   
 
-  
+<br><br><br><br><br>
 TODO: aggiungere i readme dei giochi con regole e comandi  
-TODO: sistemare questo readme
