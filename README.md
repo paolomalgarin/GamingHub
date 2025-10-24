@@ -1,5 +1,5 @@
 <p align=center>
-  <img src='https://github.com/paolomalgarin/GamingHub/blob/main/docs/img/small-glow-logo.svg' alt='Logo' width=90%><br>
+  <img src='https://github.com/paolomalgarin/GamingHub/blob/main/docs/img/logo.svg' alt='Logo' width=90%><br>
   <i width=80%>The place where i put all my browser games.</i><br>
    <a href='https://paolomalgarin.github.io/GamingHub' target='_blank'>Enter the GamingHub</a><br>
 </p>
