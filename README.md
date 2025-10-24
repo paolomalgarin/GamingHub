@@ -1,7 +1,7 @@
 <p align=center>
   <img src='https://github.com/paolomalgarin/GamingHub/blob/main/docs/img/small-logo.svg' alt='Logo' width=90%><br>
   <i width=80%>The place where i put all my browser games.</i><br>
-   <a href='https://paolomalgarin.github.io/GamingHub' target='_blank'>Enter the GamingHub</a><br>
+   <a href='https://paolomalgarin.github.io/GamingLab' target='_blank'>Enter the GamingHub</a><br>
 </p>
 <br>
 <br>
@@ -14,6 +14,7 @@
 
 # 📖 CONTENTS  
  * 🔍 [Overview](#-overview)
+ * 🎮 [Games](#-games)
  * 📄 [License](#-license)  
 
 
@@ -34,7 +35,33 @@ Questo progetto è un **calcolatore di danno** Pokémon completamente customizza
 *Include il supporto a tutte le formule ufficiali dal Gen 1 fino al Gen 9.*
 
 > [!NOTE]  
-> Try the games [here](https://paolomalgarin.github.io/GamingHub)
+> Try the games [here](https://paolomalgarin.github.io/GamingLab)
+
+<br>
+
+---
+
+<br>
+
+# 🎮 Games
+
+<br>
+<img src="https://github.com/paolomalgarin/GamingLab/blob/main/public/img/GameIcons/SplashChess.png" alt="logo" width="30" align="left" />
+
+**SplashChess**  
+*A game combining chess and splatoon.*  
+| [docs](https://paolomalgarin.github.io/GamingHub) | [play](https://paolomalgarin.github.io/GamingLab/games/SplashChess) |
+|:--:|--|
+
+
+<br>
+<img src="https://github.com/paolomalgarin/GamingLab/blob/main/public/img/GameIcons/Smash.png" alt="logo" width="30" align="left" />
+
+**Smash**  
+*A game inspired by super smash (cause I wanted to recreate it).*  
+| [docs](https://paolomalgarin.github.io/GamingHub) | [play](https://paolomalgarin.github.io/GamingLab/games/Smash) |
+|:--:|--|
+
 
 <br>
 
