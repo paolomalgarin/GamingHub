@@ -7,7 +7,7 @@
 <br>
 
 > [!warning]
-> The games of the GamingLab are made only for desktop
+> The games in the GamingLab are desktop-first and may not work on mobile devices
 
 <br>
 <br>
@@ -25,17 +25,17 @@
 
 # 🔍 Overview
 
-Questo progetto è un **calcolatore di danno** Pokémon completamente customizzabile. Permette di selezionare due Pokémon (attaccante e difensore), impostare:
+Welcome to the **GamingHub**, a collection of browser games I design and develop.  
+Each title is playable **directly in your web browser**, however, most were made with desktop play in mind  
+and offer the best experience on larger screens and with keyboard/mouse controls.  
+  
+*Explore and play the games [here](https://paolomalgarin.github.io/GamingLab).*
 
-- **Livello, EVs, IVs, natura**
-- **Abilità, status, oggetti**
-- **Mosso tipo, potenza, categoria, STAB, critico**
-- **Tipo di generazione Pokémon** (Gen 1, 2–5, 6+)
+<br>
 
-*Include il supporto a tutte le formule ufficiali dal Gen 1 fino al Gen 9.*
-
-> [!NOTE]  
-> Try the games [here](https://paolomalgarin.github.io/GamingLab)
+> [!IMPORTANT]  
+> Click the docs link in the [Games](#-games) section to view keybindings and gameplay instructions.  
+> Please read them before playing.
 
 <br>
 
@@ -79,4 +79,6 @@ This project is released under [MIT License](https://github.com/paolomalgarin/Ga
   
 
 <br><br><br><br><br>
-TODO: aggiungere i readme dei giochi con regole e comandi  
+
+> [!IMPORTANT]  
+> TODO: aggiungere i readme dei giochi con regole e comandi  
